@@ -15,6 +15,7 @@ class ViewPost extends Component
 {
     public $request_segment, $comment_blog;
     public $author_name, $title, $publish_date, $image, $content, $author_id, $comment_box;
+    public $button_show='0';
     function __construct()
     {
         $encodedData = Request::segment('3');
@@ -26,6 +27,8 @@ class ViewPost extends Component
     }
     public function comment()
     {
+        if($this->comment_box !=null){
+            $this->button_show='1';
         $blog_add = new BlogComment;
         $blog_add->author_id = $this->author_id;
         $blog_add->user_id = Auth::user()->id;
@@ -43,6 +46,8 @@ class ViewPost extends Component
 
 
         return redirect($pre_url);
+    }
+
     }
     public function render()
     {

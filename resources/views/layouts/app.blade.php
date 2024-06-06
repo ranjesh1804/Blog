@@ -103,6 +103,7 @@
                 icon: "success",
                 title: "Updated Successfully",
             });
+            
         });
 
 </script>

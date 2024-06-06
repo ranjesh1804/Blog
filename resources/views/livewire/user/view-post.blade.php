@@ -46,12 +46,15 @@
 
                             </br>
                             <tr class="">
-                                <input type="text" wire:model="comment_box" id="name" class="form-control" placeholder="Write your comment.." >
+                                <input type="text" wire:model="comment_box" wire:change.enter="comment" id="name" class="form-control" placeholder="Write your comment.." require>
+                                @error('comment_box') <span class="error text-danger">{{ $message }}</span> @enderror
 
                             </tr>
                             </br>
                             <tr class="">
+                                @if($button_show==1)
                                 <button type="button" wire:click="comment()" class="btn btn-primary mb-2 mr-2">Send </button>
+                                @endif
                             </tr>
 
                         </tbody>
