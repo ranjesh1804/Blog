@@ -58,7 +58,9 @@ class ViewPost extends Component
 
 
             $blog_comment = BlogComment::where('blog_id', $this->request_segment)->get();
-            if ($blog_comment) {
+            if (count($blog_comment)>0) {
+         
+            
                 foreach ($blog_comment as $comment) {
                     $dataObj = new \stdClass();
                     $blog = User::where('id', $comment->user_id)->first();
@@ -69,7 +71,12 @@ class ViewPost extends Component
 
                     $this->comment_blog[] = $dataObj;
                 }
-            }
+            
+        }
+        else{
+            $this->comment_blog= [];
+
+        }
         }
 
         return view('livewire.user.view-post');
