@@ -27,20 +27,20 @@
                             </br>
                             <tr class="">
                                 <b> {{$content}} </b>
-                            </tr>
-
-                            </br>
+                                </tr>
+    
+                                </br>
                           
-
-@foreach($comment_blog as $comments)
-<tr class="">
-<b style="color:blue"> {{$comments->user_name}} </b>
-</br>
-
-<b> {{$comments->comment}} </b>
-</tr>
-</br>
-@endforeach
+                                    
+                                    @foreach($comment_blog as $comments)
+                                    <tr class="">
+                                    <b style="color:blue"> {{$comments->user_name}} </b>
+                                    </br>
+                                    
+                                    <b> {{$comments->comment}} </b>
+                                    </tr>
+                                    </br>
+                                     @endforeach
 
 
 
