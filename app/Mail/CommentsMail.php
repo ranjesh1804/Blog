@@ -20,8 +20,8 @@ class CommentsMail extends Mailable implements ShouldQueue
     public function __construct($user_name,$comment,$author_name)
     {
         $this->user_name=$user_name;
-$this->comments=$comment;
-$this->author_name=$author_name;
+        $this->comments=$comment;
+        $this->author_name=$author_name;
     }
 
 
@@ -58,16 +58,13 @@ $this->author_name=$author_name;
 
     public function build()
     {
-      //  $mailtemplate = Mailtemplate::where([['name', 'job_completed_writer'], ['status', 'active']])->first();
 
         $subject ="Mail From Blogs";
-       // $mail_content = $mailtemplate->mail_content;
-        //dd($this->writer_user->name);
+     
         $mail_content = "Hi  <b>" . $this->author_name . "</b> </br>
        
         <b>" . $this->user_name . "</b> Commented on your blogs ".
         "Comments: " . $this->comments . " <br>";
-      //$from="noreply@medagghealthcare.org";
 
 
         return $this->markdown('emails.mailcontent')
