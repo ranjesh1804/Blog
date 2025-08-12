@@ -18,7 +18,7 @@ class CreatePost extends Component
     public $edit_title,$edit_image,$edit_content,$editIid;
     public function render()
     {
-        $this->blogs=Blog::paginate(10);
+        $this->blogs=Blog::where('author_id',Auth::user()->id)->paginate(10);
         return view('livewire.author.create-post',['blogs'=>$this->blogs]);
     }
     public function submit()
@@ -37,10 +37,7 @@ class CreatePost extends Component
       
         if($this->image){
             $this->validate([
-        
                 'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
-    
-    
             ]);
             $imageName = 'Blog_'.time() . '.' . $this->image->extension();
            $a= $this->image->storeAs('/images/blogs', $imageName,'public');
@@ -104,8 +101,6 @@ class CreatePost extends Component
         }
 
         $editBlog->save();
-
-        // $this->dispatch([]);
         $this->dispatch('alert', [
             'type' => 'success',
             'message' => "Updated Successfully"
